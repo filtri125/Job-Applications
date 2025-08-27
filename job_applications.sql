@@ -52,7 +52,7 @@ GO
 
 SELECT * FROM JobApplications
 
-/*134 jobs applied in total*/
+/*122 jobs applied in total*/
 
 /* Troubleshooting Issues */
 
@@ -60,12 +60,73 @@ SELECT * FROM JobApplications
 seperate occassions, but fixed it by increasing the max field width allowed
 from 50 to 100 then from 100 to 250 subsequently.*/
 
-/*I was forced to delete a row as I made an error in the `Outcome` column as follows:
+/*I was forced to delete a row as I made an error in the `Outcome` column as follows:*/
 
-/*Ran this query to delete an application record which I made a mistake on.
+/*Ran this query to delete an application record which I made a mistake on.*/
+
 /*DELETE FROM JobApplications 
 WHERE Company = 'Suncorp';*/
 
-However, when I did this, I realised that the auto-increment jumped by one in the subsequent row
+/*However, when I did this, I realised that the auto-increment jumped by one in the subsequent row
 despite there now being a row less. To fix this, I re-created the ApplicationID row in the 
 'Design' table and re-executed the database.*/
+
+/*I used the UPDATE clause to change the `Outcome` column to 'Unsuccessful' for the New Business Specialist
+role at Fidelity Life as follows:*/
+
+UPDATE JobApplications
+SET Outcome = 'Unsuccessful'
+WHERE Company = 'Fidelity Life'
+AND Position = 'New Business Specialist';
+
+/*27/08/2025*/
+/* Today, I noticed that my database contained 12 duplicate records. I used the DISTINCT keyword to confirm this:*/
+
+SELECT DISTINCT Company
+FROM JobApplications;
+
+SELECT DISTINCT Company, Position
+FROM JobApplications;
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Fidelity Life'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'BP Warkworth'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Chemist Warehouse Silverdale'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Hirestaff'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Randstad Digital'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Mighty Ape'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'Vulcan'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'BNZ Auckland HQ'
+
+SELECT Company, Position
+FROM JobApplications
+WHERE Company = 'BNZ Takapuna'
+
+
+
+
+
+
+
